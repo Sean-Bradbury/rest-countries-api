@@ -1,7 +1,6 @@
-import "../styles/head/head.css";
 import styled from "styled-components";
 import { CgSun } from "react-icons/cg";
-import { HiMoon } from "react-icons/hi";
+import { IoMoonOutline } from "react-icons/io5";
 
 const Toggle = styled.button`
     display: flex;
@@ -20,9 +19,8 @@ const Toggle = styled.button`
 const HeadTop = styled.div`
     background-color: ${props => props.theme.headBackground};
     color: ${props => props.theme.titleColor};
-    border: none;
-    box-shadow: 5px 20px 20px #000;
     transition: 0.5s all ease;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 `;
 
 function Head(props) {    
@@ -34,11 +32,11 @@ function Head(props) {
         }
     };
 
-    const icon = props.theme === "light" ? <HiMoon style={{paddingRight:"5px"}} size={20} /> : <CgSun style={{paddingRight:"5px"}} size={20} />;
+    const icon = props.theme === "light" ? <IoMoonOutline style={{paddingRight:"5px"}} size={20} /> : <CgSun style={{paddingRight:"5px"}} size={20} />;
     const modeText = props.theme === "light" ? "Dark Mode" : "Light Mode";
     
     return (
-        <HeadTop id="head" className="head">
+        <HeadTop>   
             <div className="head-content">            
                 <div className="head-content-a">
                     <div className="logo">Where in the world?</div>
@@ -50,6 +48,7 @@ function Head(props) {
                 </div>
             </div>
         </HeadTop>
+        
     )
 };
 
