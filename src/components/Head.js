@@ -21,6 +21,21 @@ const HeadTop = styled.div`
     color: ${props => props.theme.titleColor};
     transition: 0.5s all ease;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    
+    /* Head */
+    .head-content {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+        padding: 30px 20px;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .head-content-a {
+        font-weight: 600;
+        font-size: 18px;
+    }
 `;
 
 function Head(props) {    
