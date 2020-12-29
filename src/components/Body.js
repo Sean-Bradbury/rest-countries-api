@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { IoSearch } from "react-icons/io5";
+import { useState } from "react";
+import { useEffect } from "react";
+import CountryCard from "./CountryCard";
+import TopSearchComponent from "./TopSearch.js";
+import TopFilterComponent from "./TopFilter.js";
 
 const Main = styled.div`
     height: 100%;
@@ -9,86 +13,75 @@ const Main = styled.div`
     transition: 0.5s all ease;
 `;
 
-const TopSearch = styled.div`
-    background-color: ${props => props.theme.headBackground};
-    color: ${props => props.theme.titleColor};
 
-    .active.top-search-box::placeholder {
-        color: ${props => props.theme.titleColor};
-    }
 
-    .top-search {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 20px;
-        border-radius: 5px;
-        font-size: 18px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .top-search-button {
-        display: flex;
-        align-items: center;
-        background: none;
-        border: 0;
-        color: #AFAFAF;
-        transition: all 0.5s ease;
-    }
-
-    .active.top-search-button {
-        color: ${props => props.theme.titleColor};
-    }
-
-    .top-search-box {
-        border: 0;
-        padding: 1rem;
-        width: 100%;
-        margin-left: 10px;
-        background-color: transparent;    
-        color: ${props => props.theme.titleColor};    
-    }
-
-    .top-search-box:focus,
-    .top-search-button:focus {
-        outline: 0;
-    }
-
-    .top-search-box::placeholder {
-        color: #AFAFAF;
-        transition: all 0.5s ease;
-    }
+const MainBody = styled.section`
 
 `;
 
+
 function Body(props){
-    const inputFocus = () => {
-        const box = document.querySelector(".top-search-box");
-        const button = document.querySelector(".top-search-button");
+    const [searchStringText, setSearchStringText] = useState("");
 
-        box.classList.add("active");
-        button.classList.add("active");
+    const [regionName, setRegionName] = useState("");
+
+    const apiUrl = "https://restcountries.eu/rest/v2/all";
+
+    const [countryData, setCountryData] = useState([]);
+    
+    useEffect(() => {
+        getCountryDataWithFetch();
+    })
+
+    const getCountryDataWithFetch = async () => {
+        const response = await fetch(apiUrl);
+        const jsonData = await response.json();
+        setCountryData(jsonData);
+    };
+
+    function filterByRegion(regionName) {
+        setRegionName(regionName);
     }
 
-    const inputLoseFocus = () => {
-        const box = document.querySelector(".top-search-box");
-        const button = document.querySelector(".top-search-button");
+    const countriesListFiltered = countryData
+        .filter(country => {
+            return country.region.toLowerCase().indexOf(regionName.toLowerCase()) >= 0
+        })
 
-        box.classList.remove("active");
-        button.classList.remove("active");
+    function searchString(inputValue) {
+        setSearchStringText(inputValue);
     }
+
+    const countriesList = countriesListFiltered
+        .filter(country => {
+            return country.name.toLowerCase().indexOf(searchStringText.toLowerCase()) >= 0
+        })
+        .map(country => {
+            return (
+                <CountryCard
+                    flag={country.flag}
+                    name={country.name}
+                    population={country.population}
+                    region={country.region}
+                    capital={country.capital}
+                />
+            )
+        })
 
     return (
             <Main id="main" className="main">
                 <div className="container">
-                <TopSearch>
-                    <form id="top-search" className="top-search">
-                        <button className="top-search-button" type="submit"><IoSearch size={20}/></button>                    
-                        <input className="top-search-box" type="text" placeholder="search for a country..." onFocus={inputFocus} onBlur={inputLoseFocus}/>
-                    </form>
-                </TopSearch>
-
+                    <TopSearchComponent 
+                        setInputSearch={searchString}
+                    />
+                    <TopFilterComponent
+                        filterByRegion={filterByRegion}
+                    />
                 </div>
+
+                <MainBody>
+                    {countriesList}
+                </MainBody>
             </Main>
         )
 }

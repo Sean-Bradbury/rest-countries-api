@@ -7,11 +7,13 @@ const Toggle = styled.button`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    font-size: 12px;
     background-color: ${props => props.theme.headBackground};
     color: ${props => props.theme.titleColor};
     border: none;
     &:focus {
         outline: none;
+        background: none;
     }
     transition: 0.5s all ease;
 `;
@@ -20,7 +22,7 @@ const HeadTop = styled.div`
     background-color: ${props => props.theme.headBackground};
     color: ${props => props.theme.titleColor};
     transition: 0.5s all ease;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     
     /* Head */
     .head-content {
@@ -28,14 +30,14 @@ const HeadTop = styled.div`
         justify-content: space-between;
         height: 100%;
         width: 100%;
-        padding: 30px 20px;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+        padding: 30px 20px;        
     }
 
     .head-content-a {
-        font-weight: 600;
-        font-size: 18px;
+        font-weight: 800;
+        font-size: 16px;
     }
+
 `;
 
 function Head(props) {    

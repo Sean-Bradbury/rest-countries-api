@@ -13,6 +13,7 @@ const LightTheme = {
 const DarkTheme = {
     headBackground: "#2B3743",
     pageBackground: "#202D36",
+    cardBackground: "#ffffff",
     titleColor: "#fff"
 }
 
