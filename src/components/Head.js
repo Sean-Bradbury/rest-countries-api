@@ -64,9 +64,8 @@ function Head(props) {
                         </Toggle>
                 </div>
             </div>
-        </HeadTop>
-        
-    )
+        </HeadTop>        
+    );
 };
 
 export default Head;

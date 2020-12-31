@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import Head from "./components/Head";
-import Body from "./components/Body";
+import Home from "./components/Home";
+import CountryDetail from "./components/CountryDetail";
 import { ThemeProvider } from "styled-components";
 
 const LightTheme = {
@@ -25,12 +27,15 @@ const themes = {
 function App() {
   const [theme, setTheme] = useState("light");
   return (
-    <ThemeProvider theme={themes[theme]}>
-      <div className="App">
-        <Head theme={theme} setTheme={setTheme} />
-        <Body theme={theme} setTheme={setTheme} />        
-      </div>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={themes[theme]}>
+        <div className="App">
+          <Head theme={theme} setTheme={setTheme} />
+          <Route path="/" exact component={Home} />
+          <Route path="/country/:id" component={CountryDetail} />                  
+        </div>
+      </ThemeProvider>
+    </Router>
   );
 }
 

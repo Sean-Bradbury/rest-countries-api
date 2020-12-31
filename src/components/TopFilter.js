@@ -40,27 +40,21 @@ const TopFilter = styled.div`
         flex-direction: column;
         font-size: inherit;
         color: #AFAFAF;
+        opacity: 0;
         background-color: ${props => props.theme.headBackground};
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.75s ease;
+        transition: all 0.5s ease;
     }
 
     .filter-active.region-filter + .choose-region {
         visibility: visible;
         color: ${props => props.theme.titleColor};
         max-height: 500px;
+        opacity: 1;
     }
 
     .radio {
         visibility: hidden;
-    }
-
-    .active.africa-label,
-    .active.america-label,
-    .active.asia-label,
-    .active.europe-label,
-    .active.oceania-label {
-        font-size: 20px;
     }
 
 `;
@@ -76,6 +70,8 @@ function TopFilterComponent(props){
         const regionName = e.target.value;
 
         props.filterByRegion(regionName);
+
+        filterClick();
 
     });
 

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import CountryCard from "./CountryCard";
+import CountryDetail from "./CountryDetail";
 import TopSearchComponent from "./TopSearch.js";
 import TopFilterComponent from "./TopFilter.js";
 
@@ -11,16 +13,14 @@ const Main = styled.div`
     background-color: ${props => props.theme.pageBackground};
     color: ${props => props.theme.titleColor};
     transition: 0.5s all ease;
+    .country-details-link {
+        color: ${props => props.theme.titleColor};
+    }
 `;
 
 
 
-const MainBody = styled.section`
-
-`;
-
-
-function Body(props){
+function Home(props){
     const [searchStringText, setSearchStringText] = useState("");
 
     const [regionName, setRegionName] = useState("");
@@ -31,7 +31,7 @@ function Body(props){
     
     useEffect(() => {
         getCountryDataWithFetch();
-    })
+    }, [])
 
     const getCountryDataWithFetch = async () => {
         const response = await fetch(apiUrl);
@@ -58,13 +58,16 @@ function Body(props){
         })
         .map(country => {
             return (
-                <CountryCard
-                    flag={country.flag}
-                    name={country.name}
-                    population={country.population}
-                    region={country.region}
-                    capital={country.capital}
-                />
+                <Link className="country-details-link" to={`/country/${country.name}`}>
+                    <CountryCard
+                        key={country.alpha3Code}
+                        flag={country.flag}
+                        name={country.name}
+                        population={country.population}
+                        region={country.region}
+                        capital={country.capital}
+                    />
+                </Link>
             )
         })
 
@@ -79,11 +82,9 @@ function Body(props){
                     />
                 </div>
 
-                <MainBody>
                     {countriesList}
-                </MainBody>
             </Main>
         )
 }
 
-export default Body;
+export default Home;
