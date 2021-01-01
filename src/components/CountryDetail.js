@@ -18,6 +18,7 @@ const ButtonTop = styled.div`
         align-items: center;
         padding: 21px 20px;
         margin-bottom: 30px;
+        margin-right: 10px;
         border-radius: 10px;
         font-size: inherit;
         font-family: inherit;
@@ -48,6 +49,10 @@ const CountryInfo = styled.div`
         width: 100%;
     }
 
+    .country-details {
+        margin: 10px 0px;
+    }
+
     .country-details-b {
         display: grid;
         grid-gap: 30px;
@@ -55,6 +60,12 @@ const CountryInfo = styled.div`
 
     .country-details.name {
     font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    }
+
+    .country-details.sub-title {
+    font-size: 16px;
     font-weight: 800;
     margin-bottom: 20px;
     }
@@ -96,6 +107,22 @@ function CountryDetail( { match }) {
         setItem(jsonData);
     };
 
+    const apiUrl = "https://restcountries.eu/rest/v2/all";
+
+    const [countryData, setCountryData] = useState([]);
+    
+    useEffect(() => {
+        getCountryDataWithFetch();
+    }, [])
+
+    const getCountryDataWithFetch = async () => {
+        const response = await fetch(apiUrl);
+        const jsonData = await response.json();
+        setCountryData(jsonData);
+    };
+
+
+
     const chosenCountry = item
         .map(country => {
             return (
@@ -118,8 +145,8 @@ function CountryDetail( { match }) {
                                 <div className="country-details"><span>Languages:</span> <div className="languages">{country.languages.map(language => { return (<span className="language">{language.name}<span className="comma">, </span></span>)})}</div></div>                            
                             </div>                        
                                 <div className="border-countries">
-                                <div className="country-details name">Border Countries</div>
-                                <div className="country-details"><span>Languages:</span> <div className="languages">{country.languages.map(language => { return (<span className="language">{language.name}<span className="comma">, </span></span>)})}</div></div>                            
+                                <div className="country-details sub-title">Border Countries:</div>
+                                <div className="country-details">{country.borders.map(borderCountry => { return (<Link className="country-details-link" to={`/country/${country.borders}`}><ButtonTop className="country-btn">{borderCountry}</ButtonTop></Link>)})}</div>                            
                             </div>                        
                         </div>
                     </CountryInfo>
