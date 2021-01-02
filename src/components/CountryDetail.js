@@ -70,6 +70,14 @@ const CountryInfo = styled.div`
     margin-bottom: 20px;
     }
 
+    .country-details-link {
+        color: ${props => props.theme.titleColor};
+    }
+
+    .country-details-link:hover {
+        text-decoration: none;
+    }
+
     .country-details span {
         font-weight: 600;
     }
@@ -121,6 +129,45 @@ function CountryDetail( { match }) {
         setCountryData(jsonData);
     };
 
+    const borders = item.map(country => { return country.borders});
+
+    const borderCountriesList = [];
+
+    borders.forEach(border => {
+        countryData.filter(country => {
+            if(country.alpha3Code === border[0]) {
+                return borderCountriesList.push(country.name);  
+            }else if(country.alpha3Code === border[1]) {
+                return borderCountriesList.push(country.name);  
+            }else if(country.alpha3Code === border[2]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[3]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[4]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[5]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[6]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[8]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[9]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[10]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[11]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[12]) {
+                return borderCountriesList.push(country.name);     
+            }
+        })
+    })
+
+    const refreshPage = ()=>{
+        setTimeout(function(){
+            window.location.reload();
+        }, 100)        
+     }
 
 
     const chosenCountry = item
@@ -146,14 +193,13 @@ function CountryDetail( { match }) {
                             </div>                        
                                 <div className="border-countries">
                                 <div className="country-details sub-title">Border Countries:</div>
-                                <div className="country-details">{country.borders.map(borderCountry => { return (<Link className="country-details-link" to={`/country/${country.borders}`}><ButtonTop className="country-btn">{borderCountry}</ButtonTop></Link>)})}</div>                            
+                                <div className="country-details">{borderCountriesList.map(border => { return(<Link className="country-details-link" to={`/country/${border}`}><ButtonTop onClick={refreshPage} className="country-btn">{border}</ButtonTop></Link>)})}</div>                
+         
                             </div>                        
                         </div>
-                    </CountryInfo>
-            )
+                    </CountryInfo>                   
+                    )
         })
-
-    console.log(item);
 
     return (
         <Main>

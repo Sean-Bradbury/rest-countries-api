@@ -32,7 +32,7 @@ function App() {
         <div className="App">
           <Head theme={theme} setTheme={setTheme} />
           <Route path="/" exact component={Home} />
-          <Route path="/country/:id" component={CountryDetail} />                  
+          <Route path="/country/:id" component={CountryDetail}/>                  
         </div>
       </ThemeProvider>
     </Router>

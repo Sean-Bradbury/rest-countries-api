@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import CountryCard from "./CountryCard";
-import CountryDetail from "./CountryDetail";
 import TopSearchComponent from "./TopSearch.js";
 import TopFilterComponent from "./TopFilter.js";
 
@@ -15,6 +14,9 @@ const Main = styled.div`
     transition: 0.5s all ease;
     .country-details-link {
         color: ${props => props.theme.titleColor};
+    }
+    .country-details-link:hover {
+        text-decoration: none;
     }
 `;
 

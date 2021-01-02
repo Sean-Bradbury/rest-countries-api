@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { CgSun } from "react-icons/cg";
 import { IoMoonOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Toggle = styled.button`
     display: flex;
@@ -38,6 +39,14 @@ const HeadTop = styled.div`
         font-size: 16px;
     }
 
+    .logo .logo-link {
+        color: ${props => props.theme.titleColor};
+    }
+
+    .logo .logo-link:hover {
+        text-decoration: none;
+    }
+
 `;
 
 function Head(props) {    
@@ -56,7 +65,7 @@ function Head(props) {
         <HeadTop>   
             <div className="head-content">            
                 <div className="head-content-a">
-                    <div className="logo">Where in the world?</div>
+                    <div className="logo"><Link className="logo-link" to="/">Where in the world?</Link></div>
                 </div>
                 <div className="head-content-b">
                         <Toggle onClick={changeTheme}>
