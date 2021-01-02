@@ -129,6 +129,8 @@ function CountryDetail( { match }) {
         setCountryData(jsonData);
     };
 
+
+
     const borders = item.map(country => { return country.borders});
 
     const borderCountriesList = [];
@@ -192,9 +194,8 @@ function CountryDetail( { match }) {
                                 <div className="country-details"><span>Languages:</span> <div className="languages">{country.languages.map(language => { return (<span className="language">{language.name}<span className="comma">, </span></span>)})}</div></div>                            
                             </div>                        
                                 <div className="border-countries">
-                                <div className="country-details sub-title">Border Countries:</div>
-                                <div className="country-details">{borderCountriesList.map(border => { return(<Link className="country-details-link" to={`/country/${border}`}><ButtonTop onClick={refreshPage} className="country-btn">{border}</ButtonTop></Link>)})}</div>                
-         
+                                {borderCountriesList.length > 0 && <div className="country-details sub-title">Border Countries:</div>}
+                                <div className="country-details">{borderCountriesList.map(border => { return(<Link className="country-details-link" to={`/country/${border}`}><ButtonTop onClick={refreshPage} className="country-btn">{border}</ButtonTop></Link>)})}</div>
                             </div>                        
                         </div>
                     </CountryInfo>                   
