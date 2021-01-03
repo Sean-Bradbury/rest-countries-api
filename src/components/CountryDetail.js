@@ -194,6 +194,7 @@ function CountryDetail( { match }) {
             }else if(country.alpha3Code === border[14]) {
                 return borderCountriesList.push(country.name);     
             }
+            return borderCountriesList;
         })
     })
 
