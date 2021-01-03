@@ -27,6 +27,7 @@ const TopSearch = styled.div`
         border: 0;
         color: #AFAFAF;
         transition: all 0.5s ease;
+        background-color: transparent;
     }
 
     .active.top-search-button {
