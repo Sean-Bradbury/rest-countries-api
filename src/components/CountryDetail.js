@@ -198,11 +198,11 @@ function CountryDetail( { match }) {
         })
     })
 
-    const refreshPage = ()=>{
-        setTimeout(function(){
-            window.location.reload();
-        }, 100)        
-     }
+    // const refreshPage = ()=>{
+    //     setTimeout(function(){
+    //         window.location.reload();
+    //     }, 100)        
+    //  }
 
 
     const chosenCountry = item
@@ -230,7 +230,7 @@ function CountryDetail( { match }) {
                             </div>                        
                                 <div className="border-countries">
                                 {borderCountriesList.length > 0 && <div className="country-details sub-title">Border Countries:</div>}
-                                <div className="country-details">{borderCountriesList.map(border => { return(<Link className="country-details-link" to={`/country/${border}`}><ButtonTop onClick={refreshPage} className="country-btn">{border}</ButtonTop></Link>)})}</div>
+                                <div className="country-details">{borderCountriesList.map(border => { return(<Link className="country-details-link" to={`/country/${border}`}><ButtonTop className="country-btn">{border}</ButtonTop></Link>)})}</div>
                             </div>                        
                         </div>
                     </CountryInfo>                   
