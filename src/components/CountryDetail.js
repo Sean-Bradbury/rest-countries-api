@@ -198,12 +198,6 @@ function CountryDetail( { match }) {
         })
     })
 
-    // const refreshPage = ()=>{
-    //     setTimeout(function(){
-    //         window.location.reload();
-    //     }, 100)        
-    //  }
-
 
     const chosenCountry = item
         .map(country => {

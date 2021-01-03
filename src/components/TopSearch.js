@@ -54,6 +54,7 @@ const TopSearch = styled.div`
     @media (min-width: 1000px) {
         .top-search {
             width: 500px;
+            height: 50px;
         }
     }
 

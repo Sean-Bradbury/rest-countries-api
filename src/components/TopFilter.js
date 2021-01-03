@@ -64,6 +64,13 @@ const TopFilter = styled.div`
 
         .region-filter {
             width: auto;
+            height: 50px;
+            width: 200px;
+        }
+
+        .choose-region {
+            width: 200px;
+            top: 50px;
         }
     }
 
