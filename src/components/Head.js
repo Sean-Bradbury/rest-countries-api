@@ -47,6 +47,12 @@ const HeadTop = styled.div`
         text-decoration: none;
     }
 
+    @media (min-width: 1000px){
+        .head-content {
+            padding: 30px 80px;
+        }
+    }
+
 `;
 
 function Head(props) {    
@@ -62,7 +68,7 @@ function Head(props) {
     const modeText = props.theme === "light" ? "Dark Mode" : "Light Mode";
     
     return (
-        <HeadTop>   
+        <HeadTop>
             <div className="head-content">            
                 <div className="head-content-a">
                     <div className="logo"><Link className="logo-link" to="/">Where in the world?</Link></div>

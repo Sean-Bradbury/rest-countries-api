@@ -12,7 +12,7 @@ const TopSearch = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 5px 20px;
+        padding: 15px 20px;
         border-radius: 10px;
         font-size: 14px;
         background-color: ${props => props.theme.headBackground};
@@ -35,7 +35,6 @@ const TopSearch = styled.div`
 
     .top-search-box {
         border: 0;
-        padding: 16px;
         width: 100%;
         margin-left: 10px;
         background-color: transparent;    
@@ -50,6 +49,12 @@ const TopSearch = styled.div`
     .top-search-box::placeholder {
         color: #AFAFAF;
         transition: all 0.5s ease;
+    }
+
+    @media (min-width: 1000px) {
+        .top-search {
+            width: 500px;
+        }
     }
 
 `;

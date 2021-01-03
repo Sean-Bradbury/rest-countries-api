@@ -16,7 +16,7 @@ const Main = styled.div`
 const ButtonTop = styled.div`
         display: inline-flex;
         align-items: center;
-        padding: 21px 20px;
+        padding: 15px 20px;
         margin-bottom: 30px;
         margin-right: 10px;
         border-radius: 10px;
@@ -98,6 +98,34 @@ const CountryInfo = styled.div`
         display: none;
     }
 
+    @media (min-width: 1000px){
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 100px;
+        .country-details.name {
+            margin: 0;
+            grid-area: name;
+        }
+        .main-info{
+            grid-area: main;
+        }
+        .extra-info{
+            grid-area: extra;
+        }
+        .border-countries{
+            grid-area: borders;
+        }
+        .country-details-b {
+            display: grid;    
+            grid-gap: 10px;        
+            grid-template-areas: 
+            'name name'
+            'main extra'
+            'borders borders'
+            ;
+        }
+    }
+
 `;
 
 
@@ -134,10 +162,10 @@ function CountryDetail( { match }) {
     const borders = item.map(country => { return country.borders});
 
     const borderCountriesList = [];
-
+    
     borders.forEach(border => {
         countryData.filter(country => {
-            if(country.alpha3Code === border[0]) {
+            if(border === country.alpha3Code) {
                 return borderCountriesList.push(country.name);  
             }else if(country.alpha3Code === border[1]) {
                 return borderCountriesList.push(country.name);  
@@ -161,6 +189,10 @@ function CountryDetail( { match }) {
                 return borderCountriesList.push(country.name);     
             }else if(country.alpha3Code === border[12]) {
                 return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[13]) {
+                return borderCountriesList.push(country.name);     
+            }else if(country.alpha3Code === border[14]) {
+                return borderCountriesList.push(country.name);     
             }
         })
     })
@@ -180,8 +212,10 @@ function CountryDetail( { match }) {
                             <img className="country-flag" src={country.flag} alt="" srcset=""/>
                         </div>
                         <div className="country-details-b">
-                            <div className="main-info">
-                                <div className="country-details name">{country.name}</div>
+
+                            <div className="country-details name">{country.name}</div>
+
+                            <div className="main-info">                                
                                 <div className="country-details"><span>Native Name:</span> {country.nativeName}</div>
                                 <div className="country-details"><span>Population:</span> {country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                                 <div className="country-details"><span>Region:</span> {country.region}</div>
@@ -204,7 +238,7 @@ function CountryDetail( { match }) {
 
     return (
         <Main>
-            <div className="container">
+            <div className="my-container">
             
                 <ButtonTop><Link to="/"><FaAngleLeft className="left-icon" size={14}/> Back</Link></ButtonTop>       
                 

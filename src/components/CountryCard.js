@@ -1,17 +1,30 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Card = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0 8%;
+    margin: 0;
     border-radius: 5px;
     background-color: ${props => props.theme.headBackground};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 
-    .country-flag {
+    .country-flag-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow: hidden;
+        height: 200px;
         width: 100%;
     }
+
+    .country-flag {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
     .card-bottom {
         padding: 30px 20px;
         padding-bottom: 50px;
@@ -31,20 +44,22 @@ const Card = styled.div`
 `;
 
 function CountryCard(props){
-    return (
-        <div className="container">        
+    return (     
             <Card>
-                <div className="card-top">
-                    <img className="country-flag" src={props.flag} alt="" srcset=""/>
-                </div>
-                <div className="card-bottom">
-                    <div className="country-details name">{props.name}</div>
-                    <div className="country-details"><span>Population:</span> {props.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
-                    <div className="country-details"><span>Region:</span> {props.region}</div>
-                    <div className="country-details"><span>Capital:</span> {props.capital}</div>
-                </div>
+                <Link className="country-details-link" to={`/country/${props.name}`}>                
+                    <div className="card-top">
+                        <div className="country-flag-container">                        
+                            <img className="country-flag" src={props.flag} alt="" srcset=""/>
+                        </div>
+                    </div>
+                    <div className="card-bottom">
+                        <div className="country-details name">{props.name}</div>
+                        <div className="country-details"><span>Population:</span> {props.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                        <div className="country-details"><span>Region:</span> {props.region}</div>
+                        <div className="country-details"><span>Capital:</span> {props.capital}</div>
+                    </div>
+                </Link>
             </Card>
-        </div>
     )
 }
 

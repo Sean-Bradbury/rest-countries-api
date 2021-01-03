@@ -12,7 +12,7 @@ const TopFilter = styled.div`
         justify-content: space-between;
         width: 100%;
         align-items: center;
-        padding: 21px 20px;
+        padding: 15px 20px;
         border-radius: 10px;
         font-size: inherit;
         font-family: inherit;
@@ -31,7 +31,7 @@ const TopFilter = styled.div`
         position: absolute;
         width: 100%;
         max-height: 0;
-        padding: 21px 20px;
+        padding: 15px 20px;
         margin-top: 5px;
         border-radius: 10px;
         overflow-y: hidden;
@@ -55,6 +55,16 @@ const TopFilter = styled.div`
 
     .radio {
         visibility: hidden;
+    }
+
+    @media (min-width: 1000px) {
+        margin-top: 0;
+        display: flex;
+        justify-content: flex-end;
+
+        .region-filter {
+            width: auto;
+        }
     }
 
 `;

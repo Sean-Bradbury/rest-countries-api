@@ -10,9 +10,15 @@ body {
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.container {
+.my-container {
     width: 100vw;
     height: 100%;
-    padding: 30px 20px;
+    padding: 30px 30px;
+}
+
+@media (min-width: 1000px) {
+    .my-container {
+        padding: 30px 80px;
+    }
 }
 

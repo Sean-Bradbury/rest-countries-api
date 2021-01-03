@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import CountryCard from "./CountryCard";
 import TopSearchComponent from "./TopSearch.js";
 import TopFilterComponent from "./TopFilter.js";
 
 const Main = styled.div`
+    display: flex;
+    justify-content: center;
     height: 100%;
     min-height: 100vh;
     background-color: ${props => props.theme.pageBackground};
@@ -17,6 +18,25 @@ const Main = styled.div`
     }
     .country-details-link:hover {
         text-decoration: none;
+    }
+
+    .country-cards {
+        display: grid;
+        grid-gap: 3rem;
+        margin-top: 30px;
+    }
+
+    @media (min-width: 1000px){
+        .inputs-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .country-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 3rem;
+        }
     }
 `;
 
@@ -59,8 +79,7 @@ function Home(props){
             return country.name.toLowerCase().indexOf(searchStringText.toLowerCase()) >= 0
         })
         .map(country => {
-            return (
-                <Link className="country-details-link" to={`/country/${country.name}`}>
+            return (                
                     <CountryCard
                         key={country.alpha3Code}
                         flag={country.flag}
@@ -68,23 +87,27 @@ function Home(props){
                         population={country.population}
                         region={country.region}
                         capital={country.capital}
-                    />
-                </Link>
+                    />                
             )
         })
 
     return (
             <Main id="main" className="main">
-                <div className="container">
-                    <TopSearchComponent 
-                        setInputSearch={searchString}
-                    />
-                    <TopFilterComponent
-                        filterByRegion={filterByRegion}
-                    />
+                <div className="my-container">
+                    <div className="inputs-container">                    
+                        <TopSearchComponent 
+                            setInputSearch={searchString}
+                        />
+                        <TopFilterComponent
+                            filterByRegion={filterByRegion}
+                        />
+                    </div>
+                    
+                    <div className="country-cards">            
+                        {countriesList}
+                    </div>
                 </div>
 
-                    {countriesList}
             </Main>
         )
 }
