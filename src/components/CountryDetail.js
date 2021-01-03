@@ -135,7 +135,7 @@ function CountryDetail( { match }) {
 
     useEffect(() => {
         fetchItem();
-    }, [])   
+    })   
 
     const fetchItem = async () => {
         const response = await fetch(`https://restcountries.eu/rest/v2/name/${match.params.id}`);
