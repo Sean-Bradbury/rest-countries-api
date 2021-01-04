@@ -86,10 +86,15 @@ function TopSearchComponent(props){
         props.setInputSearch(newValue);
     }
 
+    function stopSubmit(e){
+        e.preventDefault();
+        document.activeElement.blur();
+    }
+
     return (
         <TopSearch>
-            <form id="top-search" className="top-search">
-                <div className="top-search-button" type="submit"><IoSearch size={20}/></div>                    
+            <form id="top-search" className="top-search" onSubmit={stopSubmit}>
+                <div className="top-search-button"><IoSearch size={20}/></div>                    
                 <input className="top-search-box" type="text" placeholder="search for a country..." value={inputValue} onChange={inputChange} onFocus={inputFocus} onBlur={inputLoseFocus}/>
             </form>
         </TopSearch>
