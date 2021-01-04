@@ -109,22 +109,22 @@ function TopFilterComponent(props){
                 <div className="region-filter-text">Filter by Region</div>           
                 <div className="region-filter-icon"><FaAngleDown size={14}/></div>
             </div>
-            <form className="choose-region">
+            <div className="choose-region">
                 <input type="radio" className="radio" name="africa" id="africa" value="africa" onClick={filterRegion} />
-                <label htmlFor="africa" className="africa-label label" name="africa">Africa</label>
+                <label htmlFor="africa" className="africa-label label">Africa</label>
 
                 <input type="radio" className="radio" name="america" id="america" value="america" onClick={filterRegion} />
-                <label htmlFor="america" className="america-label label" name="america">America</label>
+                <label htmlFor="america" className="america-label label">America</label>
                 
                 <input type="radio" className="radio" name="asia" id="asia" value="asia" onClick={filterRegion} />
-                <label htmlFor="asia" className="adia-label label" name="asia">Asia</label>
+                <label htmlFor="asia" className="adia-label label">Asia</label>
 
                 <input type="radio" className="radio" name="europe" id="europe" value="europe" onClick={filterRegion} />
-                <label htmlFor="europe" className="europe-label label" name="europe">Europe</label>
+                <label htmlFor="europe" className="europe-label label">Europe</label>
 
                 <input type="radio" className="radio" name="oceania" id="oceania" value="oceania" onClick={filterRegion} />
-                <label htmlFor="oceania" className="oceania-label label" name="oceania">Oceania</label>
-            </form>
+                <label htmlFor="oceania" className="oceania-label label">Oceania</label>
+            </div>
         </TopFilter>
     )
 

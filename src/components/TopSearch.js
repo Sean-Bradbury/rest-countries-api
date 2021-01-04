@@ -28,6 +28,9 @@ const TopSearch = styled.div`
         color: #AFAFAF;
         transition: all 0.5s ease;
         background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
     }
 
     .active.top-search-button {
@@ -99,9 +102,9 @@ function TopSearchComponent(props){
 
     return (
         <TopSearch>
-            <form id="top-search" className="top-search" onSubmit={stopSubmit}>
-                <div className="top-search-button"><IoSearch size={20}/></div>                    
-                <input className="top-search-box" type="text" placeholder="search for a country..." value={inputValue} onChange={inputChange} onFocus={inputFocus} onBlur={inputLoseFocus}/>
+            <form id="top-search" className="top-search" aria-label="Top Search Form" onSubmit={stopSubmit}>
+                <div className="top-search-button" type="submit" aria-label="Top Search Button" onSubmit={stopSubmit}><IoSearch size={20}/></div>                    
+                <input className="top-search-box" type="text" aria-label="Top Search Field" placeholder="search for a country..." value={inputValue} onChange={inputChange} onFocus={inputFocus} onBlur={inputLoseFocus}/>
             </form>
         </TopSearch>
     )

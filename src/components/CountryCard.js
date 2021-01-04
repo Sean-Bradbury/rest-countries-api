@@ -46,10 +46,10 @@ const Card = styled.div`
 function CountryCard(props){
     return (     
             <Card>
-                <Link className="country-details-link" to={`/country/${props.name}`}>                
+                <Link className="country-details-link" to={`/country/${props.name.replace(/ /g, '%20')}`}>                
                     <div className="card-top">
                         <div className="country-flag-container">                        
-                            <img className="country-flag" src={props.flag} alt="" srcset=""/>
+                            <img className="country-flag" src={props.flag} alt="" srcset={props.flag}/>
                         </div>
                     </div>
                     <div className="card-bottom">
