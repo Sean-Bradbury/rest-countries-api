@@ -103,7 +103,7 @@ function TopSearchComponent(props){
     return (
         <TopSearch>
             <form id="top-search" className="top-search" aria-label="Top Search Form" onSubmit={stopSubmit}>
-                <div className="top-search-button" type="submit" aria-label="Top Search Button" onSubmit={stopSubmit}><IoSearch size={20}/></div>                    
+                <button className="top-search-button" type="submit" aria-label="Top Search Button" onSubmit={stopSubmit}><IoSearch size={20}/></button>                    
                 <input className="top-search-box" type="text" aria-label="Top Search Field" placeholder="search for a country..." value={inputValue} onChange={inputChange} onFocus={inputFocus} onBlur={inputLoseFocus}/>
             </form>
         </TopSearch>

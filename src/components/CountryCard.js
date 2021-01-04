@@ -44,9 +44,19 @@ const Card = styled.div`
 `;
 
 function CountryCard(props){
+    const urlEncode = function(text, target, replacement) {
+        var i = 0, length = text.length;
+        for (i; i < length; i++) {
+            text = text.replace(" ", "%20");
+        }
+        return text;
+    }
+
+    const countryUrl = urlEncode(props.name);
+    
     return (     
             <Card>
-                <Link className="country-details-link" to={`/country/${props.name.replace(/ /g, '%20')}`}>                
+                <Link className="country-details-link" to={`/country/${countryUrl}`}>                
                     <div className="card-top">
                         <div className="country-flag-container">                        
                             <img className="country-flag" src={props.flag} alt="" srcset={props.flag}/>
