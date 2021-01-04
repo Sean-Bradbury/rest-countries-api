@@ -4,7 +4,9 @@ import './App.css';
 import Head from "./components/Head";
 import Home from "./components/Home";
 import CountryDetail from "./components/CountryDetail";
+import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "styled-components";
+
 
 const LightTheme = {
     headBackground: "#ffffff",
@@ -30,6 +32,7 @@ function App() {
     <Router>
       <ThemeProvider theme={themes[theme]}>
         <div className="App">
+          <ScrollToTop />
           <Head theme={theme} setTheme={setTheme} />
           <Route path="/" exact component={Home} />
           <Route path="/country/:id" component={CountryDetail}/>                  

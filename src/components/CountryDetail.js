@@ -6,6 +6,8 @@ import { FaAngleLeft } from "react-icons/fa"
 const Main = styled.div`
     height: 100%;
     min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
     background-color: ${props => props.theme.pageBackground};
     color: ${props => props.theme.titleColor};
     transition: 0.5s all ease;
@@ -98,7 +100,9 @@ const CountryInfo = styled.div`
         display: none;
     }
 
-    @media (min-width: 1000px){
+    /* Tablet & above */
+
+    @media (min-width: 1100px){
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 100px;
@@ -130,6 +134,8 @@ const CountryInfo = styled.div`
 
 
 function CountryDetail( { match }) {
+
+    
 
     const [item, setItem] = useState([]);
 

@@ -57,7 +57,9 @@ const TopFilter = styled.div`
         visibility: hidden;
     }
 
-    @media (min-width: 1000px) {
+    /* Desktops and latops */
+
+    @media (min-width: 1200px) {
         margin-top: 0;
         display: flex;
         justify-content: flex-end;
@@ -71,6 +73,15 @@ const TopFilter = styled.div`
         .choose-region {
             width: 200px;
             top: 50px;
+        }
+    }
+
+    /* Tablets */
+
+    @media (min-width: 600px) and (max-width: 1199px) {
+        .region-filter{
+            display: inline-flex;
+            width: auto;
         }
     }
 

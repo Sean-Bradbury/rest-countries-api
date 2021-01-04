@@ -52,10 +52,16 @@ const TopSearch = styled.div`
         transition: all 0.5s ease;
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1200px) {
         .top-search {
             width: 500px;
             height: 50px;
+        }
+    }
+
+    @media (min-width: 600px) and (max-width: 1199px) {
+        .top-search {
+            width: 50%;
         }
     }
 

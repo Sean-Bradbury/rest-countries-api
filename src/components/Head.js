@@ -47,6 +47,8 @@ const HeadTop = styled.div`
         text-decoration: none;
     }
 
+    /* Tablet and above */
+
     @media (min-width: 1000px){
         .head-content {
             padding: 30px 80px;

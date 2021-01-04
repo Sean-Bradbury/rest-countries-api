@@ -9,6 +9,8 @@ const Main = styled.div`
     display: flex;
     justify-content: center;
     height: 100%;
+    width: 100vw;
+    overflow-x: hidden;
     min-height: 100vh;
     background-color: ${props => props.theme.pageBackground};
     color: ${props => props.theme.titleColor};
@@ -26,7 +28,9 @@ const Main = styled.div`
         margin-top: 30px;
     }
 
-    @media (min-width: 1000px){
+    /* Desktop and laptop */
+
+    @media (min-width: 1200px){
         .inputs-container {
             display: flex;
             justify-content: space-between;
@@ -36,6 +40,14 @@ const Main = styled.div`
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-gap: 3rem;
+        }
+    }
+
+    /* Tablets */
+
+    @media (min-width: 600px) and (max-width: 1199px) {
+        .country-cards {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 `;
