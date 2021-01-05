@@ -6,7 +6,7 @@ import { FaAngleLeft } from "react-icons/fa"
 const Main = styled.div`
     height: 100%;
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
     background-color: ${props => props.theme.pageBackground};
     color: ${props => props.theme.titleColor};

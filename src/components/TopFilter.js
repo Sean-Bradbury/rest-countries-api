@@ -20,6 +20,7 @@ const TopFilter = styled.div`
         background-color: ${props => props.theme.headBackground};
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         transition: all 0.5s ease;
+        cursor: pointer;
     }
 
     .filter-active.region-filter {
@@ -55,6 +56,13 @@ const TopFilter = styled.div`
 
     .radio {
         visibility: hidden;
+        position: absolute;
+    }
+
+    .label {
+        margin: 5px 0px;
+        padding: 5px 0px;
+        cursor: pointer;
     }
 
     /* Desktops and latops */

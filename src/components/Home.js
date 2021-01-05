@@ -9,7 +9,7 @@ const Main = styled.div`
     display: flex;
     justify-content: center;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
     min-height: 100vh;
     background-color: ${props => props.theme.pageBackground};
