@@ -59,7 +59,7 @@ function Home(props){
 
     const [regionName, setRegionName] = useState("");
 
-    const apiUrl = "https://restcountries.eu/rest/v2/all";
+    const apiUrl = "https://restcountries.com/v2/all";
 
     const [countryData, setCountryData] = useState([]);
     
